@@ -1,0 +1,12 @@
+1. 
+- git init: Lệnh để khởi tạo git, hiểu đơn giản là khởi tạo để git quản lý toàn bộ thư mục này
+- git add <file name>: Chỉ định 1 file bất kỳ để copy từ vùng local máy sang vùng staging area ( lưu trữ tạm trước khi đẩy sang vùng repository)
+- git add . : Copy tất cả các file từ vùng local máy sang vùng staging area ( lưu trữ tạm trước khi đẩy sang vùng repository)
+- git commit -m “message” : Lệnh dùng để chuyển file từ vùng staging area sang vùng repository sau đó mới push lên github được, "message" thì là thồng điệp hoặc kiểu ghi chú ngắ để note commit này phục vụ mục đích gì ?
+2. 
+a. Tạo 3 file: file1, file2, file3 -> file1, file2, file3 thuộc vùng working directory ( local)
+b. Chạy lệnh: git init  -> file1, file2, file3 thuộc vùng working directory ( local)
+c. Chạy lệnh: git commit -m ”init project” -> file1, file2, file3 thuộc vùng working directory ( local)
+d. Chạy lệnh: git add file1 -> file2, file3 thuộc vùng working directory ( local), file 1 thuộc vùng staging area
+e. Chạy lệnh: git commit -m”add file1”  -> file2, file3 thuộc vùng working directory ( local), file 1 thuộc vùng repository
+f. Chạy lệnh: git commit -m”add file” -> -> file2, file3 vẫn thuộc vùng working directory ( local), file 1 thuộc vùng repository
