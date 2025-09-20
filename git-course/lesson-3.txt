@@ -1,0 +1,75 @@
+1. 
+- git commit --amend: sửa commit message gần nhất; nếu muốn thêm file mới mà không đổi message, ``git add <file>`` rồi ```git commit --amend -m "new messge"```, vẫn chỉ tạo 1 commit duy nhất ( nhưng msg chỗ này phải nhập bằng trình editor chứ không gán trực tiếp như câu lệnh dưới)
+- git commit --amend -m "<message>": sửa commit message gần nhất; nếu muốn thêm file mới mà không đổi message, git add <file> rồi git commit --amend -m "new messge", vẫn chỉ tạo 1 commit duy nhất.
+- git reset HEAD~1: dùng để xóa commit gần nhất trong repository. Ví dụ: commit 1 chứa file1, commit 2 chứa file2. Khi chạy lệnh này: Repository chỉ còn file1 (commit 2 bị bỏ).
+, Working directory vẫn còn cả file1 và file2, Staging area thì không chứa file nào.
+2. 
+a. Tạo 3 file: file1, file2, file3 
+- Working directory: file1, file2, file3
+- Staging area: empty
+- Repository: empty
+b. git init 
+- Working directory: file1, file2, file3
+- Staging area: empty
+- Repository: empty
+=> lệnh này chỉ dùng để config git quản lý thư mục chứ không làm thay đổi vị trí file
+c. git commit -m "init project" 
+- Working directory: file1, file2, file3
+- Staging area: empty
+- Repository: empty
+=> lệnh commit để đẩy file lên vùng repository nhưng trước đó chưa có lệnh add file vào vùng staging nên vị trí 3 file vẫn ở vùng working, staging và repo thì vẫn empty
+d. git add file 1
+- Working directory: file1, file2, file3
+- Staging area: file1
+- Repository: empty
+=> Chỉ copy file 1 vào vùng staging area, vùng repo vẫn trống do chưa commit file nào lên
+e. git commit -m "add file"
+- Working directory: file1, file2, file3
+- Staging area: empty
+- Repository: file1
+=> File 1 di chuyển từ vùng staging sang vùng repo, do lệnh này dùng để chuyển file từ vùng staging sang vùng repository mà trước đó chỉ có file 1 ở vùng staging thôi
+f. git add .  
+- Working directory: file 1, file2, file3
+- Staging area: file 2, file 3
+- Repository: file1
+=> lệnh này dùng để copy tất cả các file từ vùng working sang vùng staging, file 1 để add trước đó rồi nên sẽ chỉ có file 2, 3 copy từ vùng working sang vùng staging
+g.  git restore --staged file2
+- Working directory: file 1, file2, file3
+- Staging area: file 3
+- Repository: file1
+=>lệnh này để restore file 2 từ vùng staging về lại vùng working directory, nên vùng staging chỉ còn lại file 3 và repo thì có file1
+h. git commit -m”add all files”
+- Working directory: file 1, file2, file3
+- Staging area: empty
+- Repository: file1, file3
+=> lệnh này dùng để di chuyển file từ vùng staging sang vùng repository, nên sẽ di chuyển file 3 từ vùng staging lên vùng repo, vùng staging sẽ empty
+i. git reset HEAD~1
+- Working directory: file 1, file2, file3
+- Staging area: empty
+- Repository: file1
+=> Lệnh này dùng để uncommit 1 commit gần nhất, mà commit gần nhất là commit add file 3 ở bước h, nên file 3 bị xóa khỏi vùng repository nên chỉ còn file 1
+3. 
+a. git init 
+- Working directory: empty
+- Staging area: empty
+- Repository: empty
+=> Bước này chỉ dùng để config git quản lý thư mục, chưa có file nào trong thư mục nên cả 3 vùng vẫn trống
+b. Tạo file file1.txt, file2.txt, oops/file3.txt.
+- Working directory: file1.txt, file2.txt, file3.txt.
+- Staging area: empty
+- Repository: empty
+=> File mới tạo thì chỉ nằm ở vùng working directory 
+c. Thêm file .gitignore, thêm vào 2 dòng: file1.txt, oops/
+- Working directory: file1.txt, file2.txt, file3.txt.
+- Staging area: empty
+- Repository: empty
+d. git add .
+- Working directory: file1.txt, file2.txt, file3.txt.
+- Staging area: file2.txt
+- Repository: empty
+=> Ở lệnh c đã cấu hình ignore file1.txt và folder oops, mà file3.txt nằm trong folder đó nên sẽ chỉ có file2.txt copy từ vùng working sang vùng Staging
+3. git commit -m "init project"
+- Working directory: file1.txt, file2.txt, file3.txt.
+- Staging area: empty
+- Repository: file2.txt
+=> Lệnh dùng để di chuyển file từ vùng staging sang vùng repository, mà vùng staging chỉ có file2.txt nên vùng staging sẽ rỗng, file2.txt sẽ nằm ở vùng repository
