@@ -1,0 +1,47 @@
+1. Cấu trúc DOM cơ bản của 1 trang web bao gồm các thẻ ?
+- Thẻ cấu trúc gốc:
+    - <html>: Thẻ gốc của trang
+    - <head>: Chứa metadata: tiêu đề website, hiển thị Google
+    - <body>: Nội dung cả website hiển thị
+    - <div>: Khối/contianer chung
+    - <span>: inline contianer
+    - <header>, <footer>, <nav>, <section>: thẻ ngữ nghĩa
+- Thẻ nội dung: <h1>–<h6> (tiêu đề), <p> (đoạn văn), <a> (liên kết), <img> (ảnh), <ul>/<ol>/<li> (danh sách).
+- Thẻ Form: <form> (biểu mẫu), <input> ( ô nhập liệu: text, password, checkbox, radio, ...), <button> (nút bấm), <select>/<option> (dropdown), <textarea> (vùng văn bản nhiều dòng).
+2. Mô tả cấu trúc html của 1 bảng (table) ? 
+- <table>: tạo bảng dữ liệu
+- <thead>: chứa phần đầu bảng
+- <tbody>: chứa nội dung chính
+- <tfoot>: chứa phần chân bảng
+- <tr>: tạo hàng
+- <th>: tạo ô tiêu đề
+- <td>: tạo ô dữ liệu
+
+Ví dụ: 
+<table border="1">
+  <caption>Danh sách học viên</caption>
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Họ tên</th>
+      <th>Tuổi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Nguyễn Văn A</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Trần Thị B</td>
+      <td>22</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">Tổng số học viên: 2</td>
+    </tr>
+  </tfoot>
+</table>
